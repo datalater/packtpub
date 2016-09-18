@@ -12,7 +12,8 @@ free_url = 'https://www.packtpub.com/packt/offers/free-learning'
 
 # Chromedriver 실행 후 free_url 접속
 
-driver = webdriver.Chrome('C:/Users/hufs/Downloads/download/lawjmc/chromedriver.exe')
+#driver = webdriver.Chrome('C:/Users/hufs/Downloads/download/lawjmc/chromedriver.exe')
+driver = webdriver.Chrome('C:/Python34/jmcproject/chromedriver.exe')
 driver.get(free_url)
 
 # claim 버튼 클릭
@@ -53,11 +54,13 @@ if  error_message == "":
 
     today_book = driver.find_element_by_xpath("//div[@id='product-account-list']")
     today_book = today_book.text
-    today_book = today_book.encode('utf-8')
     today_book = today_book.replace("\n","")
     today_book = today_book.split('+')
+    today_book = today_book[0]
+    
+    today_book = repr(today_book)
     print("\n오늘의 책("+time.strftime("%Y.%m.%d")+"):")
-    print(today_book[0])
+    print(today_book)
     print("\n")
 else:
     print("\n로그인이 잘못되었습니다. 이메일 주소와 비밀번호를 확인해주세요.")
